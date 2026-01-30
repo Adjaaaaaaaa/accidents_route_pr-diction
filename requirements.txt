@@ -1,0 +1,14 @@
+# Manipulation de données
+pandas
+numpy
+
+# Visualisation
+matplotlib
+seaborn
+
+# Machine Learning et Statistiques
+scikit-learn
+xgboost
+# API REST
+fastapi
+uvicorn
