@@ -209,5 +209,5 @@ __marimo__/
 # This allows for better project reproducibility.
 data/raw/
 # data/*.csv
-history/ 
-data/*
+history/
+data/
