@@ -12,6 +12,6 @@ xgboost
 # API REST
 fastapi
 uvicorn
-# --- Interface Utilisateur ---
+# Interface Utilisateur
 streamlit
 requests
