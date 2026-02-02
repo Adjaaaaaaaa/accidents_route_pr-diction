@@ -4,7 +4,7 @@ import os
 
 class AccidentPredictor:
     def __init__(self):
-        # Chemin vers votre modèle multi-classe
+        # Chemin vers le modèle multi-classe
         model_path = os.path.join(os.path.dirname(__file__), "..", "data_models", "model_multi_xgb.joblib")
         self.pipeline = joblib.load(model_path)
         self.labels = {1: "Indemne", 2: "Tué", 3: "Grave", 4: "Léger"}

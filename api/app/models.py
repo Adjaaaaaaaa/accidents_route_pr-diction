@@ -13,7 +13,7 @@ class AccidentData(BaseModel):
     luminosite_pleine_nuit: bool = False
     meteo_normale: bool = True
 
-# Cette classe manquait dans votre fichier précédent
+
 class PredictionOutput(BaseModel):
     gravite_code: int
     label_francais: str
