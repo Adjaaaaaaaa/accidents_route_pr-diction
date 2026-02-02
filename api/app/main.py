@@ -1,6 +1,5 @@
-
 from fastapi import FastAPI
-from app.routes import router # Retirez le point "." si vous lancez depuis la racine /api
+from app.routes import router 
 
 app = FastAPI(title="Accident Gravity Prediction API")
 
