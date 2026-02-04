@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import os
 
 st.set_page_config(page_title="Prédiction Gravité Accident", layout="centered")
 
@@ -42,7 +43,11 @@ if submit:
 
     try:
         # Remplacez l'URL si votre API est sur un autre port
-        response = requests.post("http://127.0.0.1:8000/predict", json=payload)
+        
+       
+        # Utilisation de l'URL Docker
+        api_url = os.getenv("API_URL", "http://127.0.0.1:8000")
+        response = requests.post(f"{api_url}/predict", json=payload)
         
         if response.status_code == 200:
             result = response.json()
