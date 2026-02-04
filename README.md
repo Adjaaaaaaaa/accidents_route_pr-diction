@@ -55,13 +55,14 @@ Environnement virtuel recommandé
 * Installation
 Cloner le dépôt :
 
-Bash
+```Bash
 git clone https://github.com/Adjaaaaaaaa/accidents_route_pr-diction.git
-
+```
 Installer les dépendances :
 
-Bash
+```Bash
 pip install -r requirements.txt
+```
 Pipeline de Données (ETL)
 Le nettoyage s'effectue dans le notebook etl_cleaning.ipynb. Les étapes clés incluent :
 
@@ -87,24 +88,39 @@ Priorité opérationnelle : Le modèle est optimisé pour maximiser le Rappel (R
 Lancement de l'API (FastAPI)
 L'API charge le pipeline complet (incluant le StandardScaler) et expose un point d'entrée pour la prédiction.
 
-Bash
+```Bash
 python api/run.py
 Vérification de l'état : GET /health
-
+```
 Prédiction : POST /predict
 
 Lancement de l'Interface (Streamlit)
 L'interface permet une saisie simplifiée des caractéristiques de l'accident via des formulaires.
-
-Bash
+```Bash
 streamlit run Interface.py
+```
 Interprétation des résultats
 L'application renvoie un détail des probabilités pour chaque modalité :
 
 Probabilité : Indique le score de confiance du modèle pour chaque classe lors d'une prédiction spécifique.
 
-# Structure des dossiers
+
+## Déploiement avec Docker
+
+Le projet est entièrement conteneurisé, ce qui permet de lancer l'API et l'Interface sans aucune installation locale de Python.
+
+### Récupérer les images (Pull)
+Si vous souhaitez tester les versions stables directement depuis Docker Hub :
+
+```bash
+# Récupérer l'API (Backend)
+docker pull adjaaa/accident-api:v1.0
+
+# Récupérer l'Interface (Frontend)
+docker pull adjaaa/accident-interface:v1.0
 ```
+# Structure des dossiers
+
 ├── api/
 │   ├── app/
 │   │   ├── main.py        # Point d'entrée FastAPI
