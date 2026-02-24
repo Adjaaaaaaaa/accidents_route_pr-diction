@@ -1,8 +1,8 @@
-# 🚗 Prédiction de la Gravité des Accidents Routiers
+# Prédiction de la Gravité des Accidents Routiers
 
 > Projet de Machine Learning pour prédire la gravité des accidents de la route en utilisant les données BAAC françaises (2021-2024).
 
-## 🎯 Objectif
+## Objectif
 
 Fournir un outil d'aide à la décision capable d'estimer en temps réel la probabilité qu'un accident appartienne à l'une des quatre classes de gravité :
 - **Indemne** 
@@ -10,7 +10,7 @@ Fournir un outil d'aide à la décision capable d'estimer en temps réel la prob
 - **Grave** 
 - **Léger**
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -23,7 +23,7 @@ Fournir un outil d'aide à la décision capable d'estimer en temps réel la prob
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
-## 🚀 Démarrage Rapide
+## Démarrage Rapide
 
 ### Prérequis
 - **Python 3.11+** 
@@ -52,7 +52,7 @@ docker pull ghcr.io/adjaaaaaaaa/accidents_route_pr-diction:main
 docker run -p 8000:8000 ghcr.io/adjaaaaaaaa/accidents_route_pr-diction:main
 ```
 
-## 📊 Modèle de Données
+## Modèle de Données
 
 ### MCD (Modèle Conceptuel de Données)
 
@@ -88,7 +88,7 @@ docker run -p 8000:8000 ghcr.io/adjaaaaaaaa/accidents_route_pr-diction:main
        +-----------------------+                    +-----------------------+
 ```
 
-## 🤖 Modélisation
+## Modélisation
 
 Le modèle final est un classificateur **XGBoost** entraîné pour prédire la gravité des accidents.
 
@@ -97,7 +97,7 @@ Le modèle final est un classificateur **XGBoost** entraîné pour prédire la g
 - **Équilibrage** : Poids des classes équilibrés pour gérer les déséquilibres
 - **Optimisation** : Maximisation du Rappel sur la classe "Tué"
 
-## 🔧 Pipeline ETL
+## Pipeline ETL
 
 Le nettoyage s'effectue dans le notebook `etl_cleaning.ipynb` :
 
@@ -106,7 +106,7 @@ Le nettoyage s'effectue dans le notebook `etl_cleaning.ipynb` :
 - **Feature Engineering** : Interactions physiques pour capturer les risques
 - **Encodage** : One-Hot Encoding pour variables catégorielles
 
-## 🚀 Endpoints API
+## Endpoints API
 
 ### Health Check
 ```bash
@@ -124,7 +124,7 @@ curl -X POST http://localhost:8000/predict \
 - **Swagger UI** : `http://localhost:8000/docs`
 - **ReDoc** : `http://localhost:8000/redoc`
 
-## 🧪 Tests
+## Tests
 
 ```bash
 # Lancer tous les tests
@@ -134,25 +134,25 @@ uv run pytest
 uv run pytest --cov=api --cov-report=term-missing
 ```
 
-## 📋 Structure du Projet
+## Structure du Projet
 
 ```
-├── 📁 api/                    # API FastAPI
-│   ├── 📁 app/
-│   │   ├── 📄 main.py         # Point d'entrée FastAPI
-│   │   ├── 📄 models.py       # Schémas Pydantic
-│   │   ├── 📄 predictor.py    # Logique de prédiction
-│   │   └── 📄 routes.py       # Endpoints
-│   └── 📄 run.py              # Script de lancement
-├── 📁 data/                   # Données
-├── 📁 notebooks/              # Notebooks d'expérimentation
-├── 📁 tests/                  # Tests unitaires
-├── 📄 Dockerfile              # Configuration Docker
-├── 📄 pyproject.toml         # Configuration du projet
-└── 📁 .github/workflows/      # Pipelines CI/CD
+├── api/                    # API FastAPI
+│   ├── app/
+│   │   ├── main.py         # Point d'entrée FastAPI
+│   │   ├── models.py       # Schémas Pydantic
+│   │   ├── predictor.py    # Logique de prédiction
+│   │   └── routes.py       # Endpoints
+│   └── run.py              # Script de lancement
+├── data/                   # Données
+├── notebooks/              # Notebooks d'expérimentation
+├── tests/                  # Tests unitaires
+├── Dockerfile              # Configuration Docker
+├── pyproject.toml         # Configuration du projet
+└── .github/workflows/      # Pipelines CI/CD
 ```
 
-## 🔗 Liens Utiles
+## Liens Utiles
 
 - **GitHub Repository** : [accidents_route_pr-diction](https://github.com/Adjaaaaaaaa/accidents_route_pr-diction)
 - **CI/CD Pipeline** : [GitHub Actions](https://github.com/Adjaaaaaaaa/accidents_route_pr-diction/actions)
@@ -160,4 +160,4 @@ uv run pytest --cov=api --cov-report=term-missing
 
 ---
 
-**🚗 Prédissons ensemble des routes plus sûres !**
+**Prédissons ensemble des routes plus sûres**
