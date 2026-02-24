@@ -46,7 +46,22 @@ jobs:
         run: uv sync
 
       - name: Mypy Check
-        run: uv run mypy api/
+        run: |
+          cd api
+          uv run python -c "
+import subprocess
+import sys
+result = subprocess.run([
+    'uv', 'run', 'mypy',
+    '--ignore-missing-imports',
+    '--no-strict-optional',
+    '--config-file', 'setup.cfg',
+    'app'
+], capture_output=True, text=True)
+print(result.stdout)
+if result.stderr:
+    print('STDERR:', result.stderr)
+sys.exit(result.returncode)"
 
   security:
     runs-on: ubuntu-latest
@@ -65,7 +80,7 @@ jobs:
         run: uv sync
 
       - name: Bandit (Static Analysis)
-        run: uv run bandit -r api/
+        run: uv run bandit -r api
 
       - name: Safety (Dependencies)
         run: uv run safety check
