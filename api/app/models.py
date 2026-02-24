@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Dict
+
 
 class AccidentData(BaseModel):
     # Noms complets pour l'utilisateur (Exposés dans l'API)
@@ -17,4 +17,4 @@ class AccidentData(BaseModel):
 class PredictionOutput(BaseModel):
     gravite_code: int
     label_francais: str
-    probabilites: Dict[str, float]
+    probabilites: dict[str, float]
