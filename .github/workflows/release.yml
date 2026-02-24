@@ -49,9 +49,9 @@ jobs:
       - name: Publish to GHCR (if new release)
         if: steps.release.outputs.released == 'true'
         run: |
-          echo "🎉 New release published: ${{ steps.release.outputs.version }}"
-          echo "📦 Tag: ${{ steps.release.outputs.tag }}"
-          echo "📝 Changelog updated"
+          echo " New release published: ${{ steps.release.outputs.version }}"
+          echo " Tag: ${{ steps.release.outputs.tag }}"
+          echo " Changelog updated"
 
       - name: Update develop branch
         if: steps.release.outputs.released == 'true' && github.ref == 'refs/heads/main'
