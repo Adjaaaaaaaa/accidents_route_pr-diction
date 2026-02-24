@@ -1,9 +1,5 @@
 # Prédiction de la Gravité des Accidents Routiers (BAAC 2021-2024)
 
-[![CI/CD Pipeline](https://github.com/Adjaaaaaaaa/accidents_route_pr-diction/actions/workflows/ci.yml/badge.svg)](https://github.com/Adjaaaaaaaa/accidents_route_pr-diction/actions/workflows/ci.yml)
-[![Docker Build](https://github.com/Adjaaaaaaaa/accidents_route_pr-diction/actions/workflows/build.yml/badge.svg)](https://github.com/Adjaaaaaaaa/accidents_route_pr-diction/actions/workflows/build.yml)
-[![codecov](https://codecov.io/gh/Adjaaaaaaaa/accidents_route_pr-diction/branch/main/graph/badge.svg)](https://codecov.io/gh/Adjaaaaaaaa/accidents_route_pr-diction)
-
 > Projet de Machine Learning pour prédire la gravité des accidents de la route en utilisant les données BAAC françaises (2021-2024).
 
 ## Objectif
@@ -190,10 +186,6 @@ Ce projet utilise une pipeline CI/CD complète :
 - **Multi-stage build** : Images optimisées
 - **Health checks** : Surveillance de santé
 
-### Badges
-![CI/CD Pipeline](https://github.com/Adjaaaaaaaa/accidents_route_pr-diction/actions/workflows/ci.yml/badge.svg)
-![Docker Build](https://github.com/Adjaaaaaaaa/accidents_route_pr-diction/actions/workflows/build.yml/badge.svg)
-![codecov](https://codecov.io/gh/Adjaaaaaaaa/accidents_route_pr-diction/branch/main/graph/badge.svg)
 
 ## Structure du Projet
 
