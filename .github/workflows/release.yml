@@ -1,0 +1,63 @@
+name: Semantic Release
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+    branches:
+      - main
+      - develop
+
+permissions:
+  contents: write
+  packages: write
+  issues: write
+  pull_requests: write
+
+jobs:
+  release:
+    # Ne s'exécute que si la CI a réussi
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.11"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install dependencies
+        run: |
+          uv sync --all-extras --dev
+          uv pip install python-semantic-release
+
+      - name: Python Semantic Release
+        id: release
+        uses: python-semantic-release/python-semantic-release@v9.11.8
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to GHCR (if new release)
+        if: steps.release.outputs.released == 'true'
+        run: |
+          echo "🎉 New release published: ${{ steps.release.outputs.version }}"
+          echo "📦 Tag: ${{ steps.release.outputs.tag }}"
+          echo "📝 Changelog updated"
+
+      - name: Update develop branch
+        if: steps.release.outputs.released == 'true' && github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout develop
+          git merge main --no-ff -m "chore(release): merge main into develop after release ${{ steps.release.outputs.version }}"
+          git push origin develop
