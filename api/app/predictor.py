@@ -6,6 +6,7 @@ import pandas as pd
 
 class AccidentPredictor:
     """Predict accident gravity using XGBoost model."""
+
     def __init__(self):
         """Initialize the predictor with the pre-trained model."""
         # Path to the multi-class model

@@ -6,6 +6,7 @@ class AccidentData(BaseModel):
 
     Contains user-friendly field names exposed in the API.
     """
+
     age_usager: float
     vitesse_max_autorisee: float
     nombre_de_voies: int
@@ -22,6 +23,7 @@ class PredictionOutput(BaseModel):
 
     Contains gravity code, French label and probability distribution.
     """
+
     gravite_code: int
     label_francais: str
     probabilites: dict[str, float]
