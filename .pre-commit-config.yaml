@@ -17,4 +17,5 @@ repos:
     rev: 1.9.3
     hooks:
       - id: bandit
-        args: [-r, api]
+        files: ^api/
+        args: [-r]
