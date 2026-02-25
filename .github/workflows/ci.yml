@@ -49,19 +49,19 @@ jobs:
         run: |
           cd api
           uv run python -c "
-import subprocess
-import sys
-result = subprocess.run([
-    'uv', 'run', 'mypy',
-    '--ignore-missing-imports',
-    '--no-strict-optional',
-    '--config-file', 'setup.cfg',
-    'app'
-], capture_output=True, text=True)
-print(result.stdout)
-if result.stderr:
-    print('STDERR:', result.stderr)
-sys.exit(result.returncode)"
+            import subprocess
+            import sys
+            result = subprocess.run([
+                'uv', 'run', 'mypy',
+                '--ignore-missing-imports',
+                '--no-strict-optional',
+                '--config-file', 'setup.cfg',
+                'app'
+            ], capture_output=True, text=True)
+            print(result.stdout)
+            if result.stderr:
+                print('STDERR:', result.stderr)
+            sys.exit(result.returncode)"
 
   security:
     runs-on: ubuntu-latest
