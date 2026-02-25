@@ -49,7 +49,7 @@ if submit:
 
         # Utilisation de l'URL Docker
         api_url = os.getenv("API_URL", "http://127.0.0.1:8000")
-        response = requests.post(f"{api_url}/predict", json=payload)
+        response = requests.post(f"{api_url}/predict", json=payload, timeout=30)  # nosec: B113
 
         if response.status_code == 200:
             result = response.json()

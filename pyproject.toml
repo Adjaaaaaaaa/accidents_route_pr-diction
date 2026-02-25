@@ -103,4 +103,5 @@ dev = [
     "pytest-cov>=7.0.0",
     "safety>=3.7.0",
     "python-semantic-release>=9.11.8",
+    "types-requests>=2.32.4.20260107",
 ]

@@ -1,10 +1,12 @@
+import os
+
+# Add the api directory to Python path
+import sys
+
 from fastapi.testclient import TestClient
 
 from api.app.main import app
 
-# Add the api directory to Python path
-import sys
-import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'api'))
 
 client = TestClient(app)
