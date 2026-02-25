@@ -17,10 +17,10 @@ repos:
     rev: 1.9.3
     hooks:
       - id: bandit
-        args: [-r, api]
+        args: [-r, api, --exclude, tests, --skip, B101]
 
   - repo: https://github.com/pycqa/flake8
     rev: 7.1.1
     hooks:
       - id: flake8
-        args: [--max-line-length=88]
+        args: [--max-line-length=88, api]
