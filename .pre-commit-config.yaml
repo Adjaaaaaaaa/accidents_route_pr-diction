@@ -10,13 +10,14 @@ repos:
     rev: v1.19.1
     hooks:
       - id: mypy
+        additional_dependencies: [types-requests]
         args: [--config-file=api/setup.cfg]
 
   - repo: https://github.com/pycqa/bandit
     rev: 1.9.3
     hooks:
       - id: bandit
-        args: [-r, api, --skip, B101]  # Skip B101 (assert) warnings in tests
+        args: [-r, api]
 
   - repo: https://github.com/pycqa/flake8
     rev: 7.1.1
