@@ -24,11 +24,11 @@ Le typage permet de s'assurer que les données manipulées (nombres, textes, lis
 
 | Outil | Précision | Vitesse | Intégration avec l'éditeur (IDE) | Choix |
 | :--- | :--- | :--- | :--- | :--- |
-| **Pyright** | Excellente | Très rapide | Intégration parfaite dans VS Code (via Pylance). | **Oui** |
-| **Mypy** | Référence | Moyen | Peut être lent sur des vérifications complexes. | Non |
+| **Mypy** | Référence | Moyen | Bien intégré dans la plupart des éditeurs. | **Oui** |
+| **Pyright** | Excellente | Très rapide | Intégration parfaite dans VS Code (via Pylance). | Non |
 | **Pyre** | Bonne | Rapide | Plus difficile à configurer pour un petit projet. | Non |
 
-**Justification :** **Pyright** est sélectionné pour sa rapidité et sa parfaite intégration avec l'éditeur VS Code utilisé pour ce projet, permettant de voir les erreurs de code instantanément pendant l'écriture.
+**Justification :** **Mypy** est sélectionné car c'est l'outil de référence pour le typage en Python, avec une maturité éprouvée et une compatibilité excellente avec les projets existants. Il offre un bon équilibre entre précision et stabilité.
 
 ---
 
@@ -58,6 +58,6 @@ Le framework de tests sert à vérifier que chaque fonction ou calcul du projet 
 
 Pour ce projet, la suite d'outils suivante est adoptée :
 * **Ruff** : Pour la propreté et le formatage du code.
-* **Pyright** : Pour la sécurité des types de données.
+* **Mypy** : Pour la sécurité des types de données.
 * **pytest** : Pour la validation du bon fonctionnement du code.
 * **Bandit & Safety** : Pour la sécurité globale.

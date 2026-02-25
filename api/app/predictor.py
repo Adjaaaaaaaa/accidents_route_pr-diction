@@ -5,8 +5,10 @@ import pandas as pd
 
 
 class AccidentPredictor:
+    """Predict accident gravity using XGBoost model."""
     def __init__(self):
-        # Chemin vers le modèle multi-classe
+        """Initialize the predictor with the pre-trained model."""
+        # Path to the multi-class model
         model_path = os.path.join(
             os.path.dirname(__file__), "..", "data_models", "model_multi_xgb.joblib"
         )
@@ -14,12 +16,20 @@ class AccidentPredictor:
         self.labels = {1: "Indemne", 2: "Tué", 3: "Grave", 4: "Léger"}
 
     def predict(self, user_data: dict):
-        # 1. Calcul des variables internes attendues par le modèle
+        """Predict accident gravity from user input data.
+        
+        Args:
+            user_data (dict): Dictionary containing user input features
+            
+        Returns:
+            dict: Prediction results with gravity code, label and probabilities
+        """
+        # 1. Calculate internal variables expected by the model
         internal_data = {
             "age": user_data["age_usager"],
             "vma": user_data["vitesse_max_autorisee"],
             "nbv": user_data["nombre_de_voies"],
-            # Recalcul des features importantes identifiées lors du Feature Engineering
+            # Recalculate important features identified during Feature Engineering
             "vitesse_x_collision": user_data["vitesse_max_autorisee"]
             if user_data["collision_frontale"]
             else 0,
@@ -29,13 +39,13 @@ class AccidentPredictor:
             "agglo_x_vitesse": user_data["vitesse_max_autorisee"]
             if user_data["en_agglomeration"]
             else 0,
-            # Mapping des Dummies
+            # Dummy mapping
             "sexe_2": 0 if user_data["sexe_masculin"] else 1,
             "agg_2": 1 if user_data["en_agglomeration"] else 0,
             "lum_3": 1 if user_data["luminosite_pleine_nuit"] else 0,
         }
 
-        # 2. Création du DataFrame et alignement des colonnes
+        # 2. Create DataFrame and align columns
         df = pd.DataFrame([internal_data])
         expected_columns = self.pipeline.feature_names_in_
         for col in expected_columns:
@@ -43,11 +53,11 @@ class AccidentPredictor:
                 df[col] = 0
         df = df[expected_columns]
 
-        # 3. Prédiction et conversion de l'index (0-3 -> 1-4)
+        # 3. Prediction and index conversion (0-3 -> 1-4)
         prediction_idx = self.pipeline.predict(df)[0]
         real_gravity = int(prediction_idx + 1)
 
-        # 4. Calcul des probabilités par modalité
+        # 4. Calculate probabilities by modality
         probs = self.pipeline.predict_proba(df).tolist()[0]
 
         return {
