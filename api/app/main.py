@@ -1,5 +1,6 @@
-from app.routes import router
 from fastapi import FastAPI
+
+from .routes import router
 
 app = FastAPI(title="Accident Gravity Prediction API")
 
