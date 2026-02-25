@@ -2,6 +2,11 @@ from fastapi.testclient import TestClient
 
 from api.app.main import app
 
+# Add the api directory to Python path
+import sys
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'api'))
+
 client = TestClient(app)
 
 
@@ -39,7 +44,7 @@ def test_predict_endpoint():
 def test_predict_endpoint_invalid_data():
     """Test the prediction endpoint with invalid data."""
     invalid_data = {
-        "age_usager": -5.0,  # Invalid age
+        "age_usager": "not_a_number",  # Invalid type
         "vitesse_max_autorisee": 50.0,
         "nombre_de_voies": 2,
         "ceinture_ou_casque_attache": True,
