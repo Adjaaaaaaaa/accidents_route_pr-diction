@@ -17,10 +17,10 @@ class AccidentPredictor:
 
     def predict(self, user_data: dict):
         """Predict accident gravity from user input data.
-        
+
         Args:
             user_data (dict): Dictionary containing user input features
-            
+
         Returns:
             dict: Prediction results with gravity code, label and probabilities
         """

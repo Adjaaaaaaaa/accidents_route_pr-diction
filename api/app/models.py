@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 class AccidentData(BaseModel):
     """Input data model for accident prediction.
-    
+
     Contains user-friendly field names exposed in the API.
     """
     age_usager: float
@@ -19,7 +19,7 @@ class AccidentData(BaseModel):
 
 class PredictionOutput(BaseModel):
     """Output data model for accident prediction results.
-    
+
     Contains gravity code, French label and probability distribution.
     """
     gravite_code: int

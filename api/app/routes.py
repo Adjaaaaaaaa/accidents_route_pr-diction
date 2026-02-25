@@ -15,10 +15,10 @@ async def health_check():
 @router.post("/predict", response_model=PredictionOutput)
 async def get_prediction(data: AccidentData):
     """Predict accident gravity from input data.
-    
+
     Args:
         data (AccidentData): User input data for prediction
-        
+
     Returns:
         PredictionOutput: Prediction results with gravity code, label and probabilities
     """
